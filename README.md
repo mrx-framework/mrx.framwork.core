@@ -5,7 +5,7 @@ MRX.FRAMEWORK is a "framework" you can use to build something awesome. It is not
 ## Installation
 
 ### Step #1
-Clone this repo: ``git clone https://github.com/domsen123/mrx.framework.core``
+Clone this repo: ``git clone https://github.com/mrx-framework/mrx.framwork.core``
 
 ### Step #2
 Install dependencies using: ``yarn``
@@ -52,7 +52,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update tests as appropriate.
 
 ## Author
-* [Domsen 123](https://github.com/domsen123 "domsen123") :P
+* [domsen123](https://github.com/domsen123 "domsen123") :P
 
 ## License
-[GNU v3](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[GNU v3](https://github.com/mrx-framework/mrx.framwork.core/blob/master/README.md)
