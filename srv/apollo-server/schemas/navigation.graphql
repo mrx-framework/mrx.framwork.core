@@ -1,0 +1,58 @@
+type Navigation {
+  id: Int!
+  text: String!
+  slug: String!
+  path: String
+  icon: String!
+  order: Int
+  location: String!
+  hidden: Boolean!
+  parent: Navigation
+  childs: [Navigation]
+  page: Page
+  createdAt: String!
+  updatedAt: String!
+}
+
+type NavigationList {
+  page: Int
+  limit: Int
+  total: Int
+  data: [Navigation]
+}
+
+type NavLocation {
+  id: Int!
+  name: String!
+  hidden: Boolean!
+  navigations(page: Int, limit: Int, query: String): NavigationList
+  createdAt: String!
+  updatedAt: String!
+}
+
+type NavLocationList {
+  page: Int
+  limit: Int
+  total: Int
+  data: [NavLocation]
+}
+
+type Query {
+  displayNavigation(location: String!, parent: Int): [Navigation!],
+
+  navlocation(id: Int!, page: Int, limit: Int, query: String): NavLocation!,
+  navlocations(page: Int, limit: Int, query: String): NavLocationList,
+
+  navigation(id: Int!): Navigation!,
+  navigations(page: Int, limit: Int, query: String): NavigationList,
+}
+
+type Mutation {
+  createNavigationLocation(name: String!, hidden: Boolean): NavLocation!,
+  updateNavigationLocation(id: Int!, name: String!, hidden: Boolean): NavLocation!,
+  destroyNavigationLocations(ids: [Int!]!): [NavLocation]!,
+
+  createNavigation(text: String!, slug: String!, path: String!, icon: String!, hidden: Boolean, navlocationId: Int): Navigation!,
+  updateNavigation(id: Int!, text: String!, slug: String!, path: String!, icon: String!, hidden: Boolean): Navigation!,
+  destroyNavigations(ids: [Int!]!): [Navigation]!,
+}

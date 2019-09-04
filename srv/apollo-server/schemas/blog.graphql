@@ -1,0 +1,88 @@
+type BlogPost {
+  id: Int!
+  title: String!
+  path: String!
+  content: String
+  isDraft: Boolean
+  version: Float
+  uuid: String
+  publishingDate: String!
+  isPublished: Boolean
+  category: BlogCategory
+  tags: [Tag]
+  createdAt: String!
+  updatedAt: String!
+}
+
+type BlogPostList {
+  page: Int
+  limit: Int
+  total: Int
+  data: [BlogPost]
+}
+
+type BlogCategory {
+  id: Int!
+  name: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type BlogCategoryList {
+  page: Int
+  limit: Int
+  total: Int
+  data: [BlogCategory]
+}
+
+type Tag {
+  id: Int!
+  name: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type TagList {
+  page: Int
+  limit: Int
+  total: Int
+  data: [Tag]
+}
+
+type Query {
+  displayblogpost(path: String!): BlogPost!,
+
+  blogpost(id: Int!): BlogPost!,
+  blogposts(page: Int, limit: Int, query: String): BlogPostList,
+
+  blogcategory(id: Int!, page: Int, limit: Int, query: String): BlogCategory!,
+  blogcategories(page: Int, limit: Int, query: String): BlogCategoryList,
+
+  tag(id: Int!, page: Int, limit: Int, query: String): Tag!,
+  tags(page: Int, limit: Int, query: String): TagList,
+}
+
+type Mutation {
+  createBlogPost(title: String!, path: String!, content: String): BlogPost!,
+  updateBlogPost(
+    id: Int!,
+    title: String!,
+    path: String!,
+    content: String,
+    category: Int,
+    tags: [Int],
+    createdAt: String!,
+    uuid: String!,
+    isDraft: Boolean
+  ): BlogPost!,
+  destroyBlogPosts(ids: [Int!]!): [BlogPost]!,
+
+  createBlogCategory(name: String!): BlogCategory!,
+  updateBlogCategory(id: Int!, name: String!): BlogCategory!,
+  destroyBlogCategories(ids: [Int!]!): [BlogCategory]!,
+
+  createTag(name: String!): Tag!,
+  updateTag(id: Int!, name: String!): Tag!,
+  destroyTags(ids: [Int!]!): [Tag]!,
+
+}

@@ -1,0 +1,76 @@
+type Page {
+  id: Int!
+  title: String!
+  slug: String!
+  path: String!
+  component: String
+  components: [Component]
+  layout: String
+  isStatic: Boolean
+  isDraft: Boolean
+  publishingDate: String!
+  isPublished: Boolean
+  version: Float
+  uuid: String
+  hidden: Boolean
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Component {
+  id: Int!
+  name: String!
+  title: String!
+  properties: String
+  content: String
+  order: Int!
+  childs: [Component]
+  hidden: Boolean!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type PageList {
+  page: Int
+  limit: Int
+  total: Int
+  data: [Page]
+}
+
+type Query {
+  routes: [Page!],
+  page(id: Int!): Page!,
+  pages(page: Int, limit: Int, query: String): PageList,
+  displayPage(id: Int, path: String): Page
+}
+
+type Mutation {
+  createPage(title: String!, slug: String!, path: String!): Page!,
+  updatePage(
+    title: String!,
+    slug: String!,
+    path: String!,
+    uuid: String!,
+    layout: String,
+    hidden: Boolean,
+    isDraft: Boolean,
+    publishingDate: String!
+    created_at: String!
+  ): Page,
+  attachComponentToPage(id: Int!, attach: [Int]!): [Component]!,
+  detachComponentToPage(id: Int!, detach: [Int]!): [Component]!,
+
+  createComponent(
+    name: String!,
+    title: String!,
+    properties: String!,
+    content: String,
+    order: Int,
+    hidden: Boolean,
+    pageId: Int,
+    componentId: Int
+  ): Component,
+  attachPageToComponent(id: Int!, attach: [Int]!): [Page]!,
+  detachPageToComponent(id: Int!, detach: [Int]!): [Page]!,
+}
+

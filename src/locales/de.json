@@ -1,0 +1,70 @@
+{
+  "common": {
+    "yes": "Ja",
+    "no": "Nein",
+    "next": "Vor",
+    "previous": "Zurück",
+    "back": "Zurück",
+    "go_back": "Zurück",
+    "new": "Neu",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "search": "Suchen",
+    "attach": "Hinzufügen",
+    "detach": "Entfernen",
+    "all": "Alle",
+    "thanks": "Danke",
+    "response_soon": "Wir werden uns schnellstmöglich bei Ihnen melden.",
+    "publish": "Veröffentlichen",
+    "category": "Kategorie",
+    "tags": "Tags"
+  },
+  "descriptions": {
+    "manage_users": "Beschreibung für die Benutzerverwaltung /placeholder",
+    "manage_groups": "Beschreibung für die Gruppenverwaltung /placeholder",
+    "manage_permissions": "Beschreibung für die Berechtigungsverwaltung /placeholder",
+    "manage_pages": "Beschreibung für die Seitenverwaltung /placeholder",
+    "manage_medias": "Beschreibung für die Medienverwaltung /placeholder",
+    "manage_blogs": "Beschreibung für die Beitragsverwaltung /placeholder",
+    "manage_blog_categories": "Beschreibung für die Kategorieverwaltung /placeholder",
+    "manage_tags": "Beschreibung für die Tagverwaltung /placeholder",
+    "manage_navlocations": "Beschreibung für die Verwaltung der Navigationsorte /placeholder",
+    "manage_navigations": "Beschreibung für die Menüpunktverwaltung /placeholder",
+    "manage_forms": "Beschreibung für die Formulare /placeholder",
+    "manage_form_fields": "Beschreibung für die Formularfelder /placeholder",
+    "manage_form_datas": "Beschreibung für die Formulardaten /placeholder",
+    "manage_themes": "Description to manage themes /placeholder",
+    "manage_settings": "Beschreibung für die Einstellungen /placeholder"
+  },
+  "placeholders": {
+    "blank_page_header": "Start building something awesome.",
+    "blank_page_subheader": "This page is empty right now."
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "pages": "Seiten",
+    "all_pages": "Alle Seiten",
+    "new_page": "Neue Seite",
+    "blog": "Blog",
+    "all_posts": "Alle Beiträge",
+    "new_post": "Neuer Beitrag",
+    "blog_categories": "Kategorien",
+    "blog_tags": "Tags",
+    "media": "Medien",
+    "navigation": "Navigation",
+    "users": "Benutzer",
+    "groups": "Gruppen",
+    "permissions": "Berechtigungen",
+    "forms": "Formulare",
+    "theme": "Design",
+    "settings": "Einstellungen",
+    "home": "Home"
+  },
+  "labels": {
+    "name": "Name",
+    "title": "Titel",
+    "path": "Pfad",
+    "published": "Veröffentlicht",
+    "version": "Version"
+  }
+}

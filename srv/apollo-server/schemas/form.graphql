@@ -1,0 +1,83 @@
+type DisplayForm {
+  id: Int!
+  name: String!
+  formfields: [FormField]
+  formdatas: [FormData]
+  createdAt: String
+  updatedAt: String
+}
+
+type Form {
+  id: Int!
+  name: String!
+  formfields(page: Int, limit: Int, query: String): FormFieldList
+  formdatas(page: Int, limit: Int, query: String): FormDataList
+  createdAt: String
+  updatedAt: String
+}
+
+type FormList {
+  page: Int
+  limit: Int
+  total: Int
+  data: [Form]
+}
+
+type FormField {
+  id: Int!
+  label: String!
+  inputType: String!
+  hint: String
+  required: Boolean
+  createdAt: String
+  updatedAt: String
+}
+
+type FormFieldList {
+  page: Int
+  limit: Int
+  total: Int
+  data: [FormField]
+}
+
+type FormData {
+  id: Int!
+  data: String!
+  seen: Boolean
+  createdAt: String
+  updatedAt: String
+}
+
+type FormDataList {
+  page: Int
+  limit: Int
+  total: Int
+  data: [FormData]
+}
+
+type Query {
+  displayForm(id: Int!): DisplayForm!,
+
+  form(id: Int!, page: Int, limit: Int, query: String): Form!,
+  forms(page: Int, limit: Int, query: String): FormList,
+
+  formField(id: Int!): FormField!,
+  formFields(page: Int, limit: Int, query: String): FormFieldList,
+
+  formData(id: Int!): FormData!,
+  formDatas(page: Int, limit: Int, query: String): FormDataList,
+}
+
+type Mutation {
+  createForm(name: String!): Form!,
+  updateForm(id: Int!, name: String!): Form!,
+  destroyForms(ids: [Int!]!): [Form]!,
+
+  createFormField(label: String!, inputType: String!, hint: String, required: Boolean, formId: Int): FormField!,
+  updateFormField(id: Int!, label: String!, inputType: String!, hint: String, required: Boolean): FormField!,
+  destroyFormFields(ids: [Int!]!): [FormField]!,
+
+  createFormData(data: String!, formId: Int): FormData!,
+  updateFormData(id: Int!, data: String!, seen: Boolean): FormData!,
+  destroyFormDatas(ids: [Int!]!): [FormData]!,
+}

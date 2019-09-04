@@ -1,0 +1,94 @@
+type User {
+  id: Int!
+  accountname: String!
+  firstname: String!
+  lastname: String!
+  email: String!
+  password: String!
+  roles(page: Int, limit: Int, query: String): RoleList
+  permissions(page: Int, limit: Int, query: String): PermissionList
+  createdAt: String!
+  updatedAt: String!
+}
+
+type UserList {
+  page: Int
+  limit: Int
+  total: Int
+  data: [User]
+}
+
+type Role {
+  id: Int!
+  name: String!
+  slug: String!
+  description: String!
+  protected: Boolean!
+  users(page: Int, limit: Int, query: String): UserList
+  permissions(page: Int, limit: Int, query: String): PermissionList
+  createdAt: String!
+  updatedAt: String!
+}
+
+type RoleList {
+  page: Int
+  limit: Int
+  total: Int
+  data: [Role]
+}
+
+type Permission {
+  id: Int!
+  name: String!
+  slug: String!
+  description: String!
+  protected: Boolean!
+  roles(page: Int, limit: Int, query: String): RoleList
+  users(page: Int, limit: Int, query: String): UserList
+  createdAt: String!
+  updatedAt: String!
+}
+
+type PermissionList {
+  page: Int
+  limit: Int
+  total: Int
+  data: [Permission]
+}
+
+type Query {
+  currentUser: User!,
+
+  user(id: Int!): User!,
+  users(page: Int, limit: Int, query: String): UserList
+
+  role(id: Int!, page: Int, limit: Int, query: String): Role!,
+  roles(page: Int, limit: Int, query: String): RoleList,
+
+  permission(id: Int!, page: Int, limit: Int, query: String): Permission!,
+  permissions(page: Int, limit: Int, query: String): PermissionList,
+
+}
+
+type Mutation {
+  createUser(accountname: String!, firstname: String!, lastname: String!, email: String!, password: String!): User!,
+  updateUser(id: Int, accountname: String, firstname: String, lastname: String, email: String, password: String): User!,
+  destroyUsers(ids: [Int!]!): [User]!,
+  attachRoleToUser(id: Int!, attach: [Int]!): [Role]!,
+  detachRolesFromUser(id: Int!, detach: [Int]!): [Role]!,
+  attachPermissionToUser(id: Int!, attach: [Int]!): [Permission]!,
+  detachPermissionsFromUser(id: Int!, detach: [Int]!): [Permission]!,
+
+  createRole(name: String!, slug: String!, description: String!): Role!,
+  updateRole(id: Int, name: String!, slug: String!, description: String!): Role!,
+  destroyRoles(ids: [Int!]!): [Role]!,
+  attachUserToRole(id: Int!, attach: [Int]!): [User]!,
+  detachUsersFromRole(id: Int!, detach: [Int]!): [User]!,
+  attachPermissionToRole(id: Int!, attach: [Int]!): [Permission]!,
+  detachPermissionsFromRole(id: Int!, detach: [Int]!): [Permission]!,
+
+  attachUserToPermission(id: Int!, attach: [Int]!): [User]!,
+  detachUsersFromPermission(id: Int!, detach: [Int]!): [User]!,
+  attachRoleToPermission(id: Int!, attach: [Int]!): [Role]!,
+  detachRolesFromPermission(id: Int!, detach: [Int]!): [Role]!,
+}

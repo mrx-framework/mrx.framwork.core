@@ -1,0 +1,11 @@
+type Settings {
+  key: String!
+  value: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Query {
+  settings(key: String!): [Settings!]
+}
+

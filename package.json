@@ -1,0 +1,134 @@
+{
+  "name": "mrx",
+  "description": "A Vue.js project",
+  "version": "1.0.0",
+  "author": "Dominic Marx <dmarx@marxulm.de>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "lint": "eslint ./srv/**/*.js",
+    "dev": "node srv/bin/www",
+    "watch": "nodemon",
+    "clean": "rm -rf dist",
+    "start": "yarn clean && yarn build && yarn start:server",
+    "start:server": "cross-env NODE_ENV=production node srv/bin/www",
+    "build": "yarn build:client && yarn build:server",
+    "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.client.config.js --progress --hide-modules",
+    "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.server.config.js --progress --hide-modules"
+  },
+  "dependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@mdi/font": "^4.2.95",
+    "aos": "^3.0.0-beta.6",
+    "apollo-boost": "^0.4.3",
+    "apollo-cache-inmemory": "^1.6.2",
+    "apollo-client": "^2.6.3",
+    "apollo-link": "^1.2.12",
+    "apollo-link-http": "^1.5.15",
+    "apollo-server-express": "^2.7.0",
+    "axios": "^0.19.0",
+    "bcrypt": "^3.0.6",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "graphql": "^14.4.2",
+    "graphql-tag": "^2.10.1",
+    "lodash": "^4.17.15",
+    "lru-cache": "^5.1.1",
+    "mariadb": "^2.1.0",
+    "merge-graphql-schemas": "^1.5.8",
+    "mkdirp-promise": "^5.0.1",
+    "moment": "^2.24.0",
+    "multer": "^1.4.2",
+    "node-fetch": "^2.6.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-saml": "^1.1.0",
+    "promise": "^8.0.3",
+    "rimraf": "^3.0.0",
+    "roboto-fontface": "^0.10.0",
+    "sequelize": "^5.10.1",
+    "sharp": "^0.23.0",
+    "tiptap-vuetify": "^1.7.0",
+    "uuid": "^3.3.2",
+    "vue": "^2.6.10",
+    "vue-apollo": "^3.0.0-rc.2",
+    "vue-async-computed": "^3.7.0",
+    "vue-client-only": "^2.0.0",
+    "vue-cropperjs": "^4.0.0",
+    "vue-i18n": "^8.14.0",
+    "vue-meta": "^2.0.5",
+    "vue-router": "^3.0.7",
+    "vue-server-renderer": "^2.6.10",
+    "vue2-perfect-scrollbar": "^1.2.1",
+    "vuetify": "^2.0.5",
+    "vuetify-loader": "^1.2.2",
+    "vuex": "^3.1.1",
+    "vuex-router-sync": "^5.0.0",
+    "webpack-merge": "^4.2.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "devDependencies": {
+    "babel-loader": "^8.0.6",
+    "babel-plugin-graphql-tag": "^2.4.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "cross-env": "^5.2.0",
+    "css-loader": "^3.1.0",
+    "deepmerge": "^4.0.0",
+    "eslint": "^6.1.0",
+    "fibers": "^4.0.1",
+    "file-loader": "^4.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "memory-fs": "^0.4.1",
+    "nodemon": "^1.19.1",
+    "sass": "^1.22.7",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "url-loader": "^2.1.0",
+    "vue-loader": "^15.7.1",
+    "vue-ssr-webpack-plugin": "^3.0.0",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-middleware": "^3.7.0",
+    "webpack-dev-server": "^3.7.2",
+    "webpack-hot-middleware": "^2.25.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended"
+    ],
+    "rules": {
+      "semi": [
+        "error",
+        "never"
+      ],
+      "no-console": "off",
+      "quotes": [
+        "error",
+        "double"
+      ],
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ]
+    },
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module",
+      "parser": "babel-eslint"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "common": {
+    "yes": "Yes",
+    "no": "No",
+    "next": "Next",
+    "previous": "Previous",
+    "back": "Back",
+    "go_back": "Go Back",
+    "new": "New",
+    "edit": "Edit",
+    "delete": "Delete",
+    "search": "Search",
+    "attach": "Add",
+    "detach": "Remove",
+    "all": "All",
+    "thanks": "Thank you",
+    "response_soon": "You'll get a response soon.",
+    "publish": "Publish",
+    "category": "Category",
+    "tags": "Tags"
+  },
+  "descriptions": {
+    "manage_users": "Description to manage users /placeholder",
+    "manage_groups": "Description to manage groups /placeholder",
+    "manage_permissions": "Description to manage permissions /placeholder",
+    "manage_pages": "Description to manage pages /placeholder",
+    "manage_medias": "Description to manage media /placeholder",
+    "manage_blogs": "Description to manage blog posts /placeholder",
+    "manage_blog_categories": "Description to manage blog categories /placeholder",
+    "manage_tags": "Description to manage tags /placeholder",
+    "manage_navlocations": "Description to manage navigation locations /placeholder",
+    "manage_navigations": "Description to manage navigation items /placeholder",
+    "manage_forms": "Description to manage forms /placeholder",
+    "manage_form_fields": "Description to manage form fields /placeholder",
+    "manage_form_datas": "Description to manage form data /placeholder",
+    "manage_themes": "Description to manage themes /placeholder",
+    "manage_settings": "Description to manage settings /placeholder"
+  },
+  "placeholders": {
+    "blank_page_header": "Start building something awesome.",
+    "blank_page_subheader": "This page is empty right now."
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "pages": "Pages",
+    "all_pages": "All Pages",
+    "new_page": "New Page",
+    "blog": "Blog",
+    "all_posts": "All Posts",
+    "new_post": "New Post",
+    "blog_categories": "Categories",
+    "blog_tags": "Tags",
+    "media": "Media",
+    "navigation": "Navigation",
+    "users": "Users",
+    "groups": "Groups",
+    "permissions": "Permissions",
+    "forms": "Forms",
+    "theme": "Theme",
+    "settings": "Settings",
+    "home": "Home"
+  },
+  "labels": {
+    "name": "Name",
+    "title": "Title",
+    "path": "Path",
+    "published": "Published",
+    "version": "Version"
+  }
+}

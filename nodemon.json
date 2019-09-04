@@ -1,0 +1,5 @@
+{
+  "exec": "yarn dev",
+  "watch": ["srv/*"],
+  "ext": "js, html, css, json, graphql"
+}
