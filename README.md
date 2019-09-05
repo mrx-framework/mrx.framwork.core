@@ -2,6 +2,11 @@
 
 MRX.FRAMEWORK is a "framework" you can use to build something awesome. It is not just a CMS, because you can individually add functionality to its core. It comes with an integrated PageBuilder where you can generate your Pages with no code. Also it comes with an integrated Blog where you can publish your some Posts.
 
+## Prerequisite
+
+### MySQL / MariaDB
+``CREATE DATABASE `[yourdatabasename]` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ;``
+
 ## Installation
 
 ### Step #1
@@ -15,6 +20,8 @@ Modify the ``config.js`` in the root folder. Be sure, that you use ``en`` or ``d
 
 If you use an locale, which not exists in the above path, the migration will fail.
 
+
+
 ## Facts
 * All the client stuff lifes in ``./src``.
 * All the server stuff lifes in ``./srv``.
@@ -26,6 +33,7 @@ If you use an locale, which not exists in the above path, the migration will fai
 * Google Audit performance is terrible cause treeshaking & dynamic import is not working.
 * Some things are hard coded right now and not dynamic.
 * No Tests.
+* Admin Password is: passw0rd
 
 
 ## Usage

@@ -6,7 +6,7 @@ const config = {
       connection: {
         "username": "root",
         "password": null,
-        "database": "mrx",
+        "database": "mrx.framework.dev",
         "host": "127.0.0.1",
         "dialect": "mariadb"
       },
@@ -26,7 +26,7 @@ const config = {
       connection: {
         "username": "root",
         "password": null,
-        "database": "mrx",
+        "database": "mrx.framework.dev",
         "host": "127.0.0.1",
         "dialect": "mariadb"
       },
@@ -46,7 +46,7 @@ const config = {
       connection: {
         "username": "root",
         "password": null,
-        "database": "mrx",
+        "database": "mrx.framework.dev",
         "host": "127.0.0.1",
         "dialect": "mariadb"
       },
