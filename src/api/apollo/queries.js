@@ -408,6 +408,16 @@ export const getPages = gql`query getPages($page: Int, $limit: Int, $query: Stri
       isPublished
       isStatic
       version
+      author {
+        id
+        firstname
+        lastname
+      }
+      editor {
+        id
+        firstname
+        lastname
+      }
       uuid
     }
   }
@@ -422,6 +432,16 @@ export const getPage = gql`query getPage($id: Int!) {
     isPublished
     isStatic
     version
+    author {
+      id
+      firstname
+      lastname
+    }
+    editor {
+      id
+      firstname
+      lastname
+    }
     uuid
   }
 }`
@@ -437,6 +457,16 @@ query displayPage($id: Int, $path: String) {
     uuid
     publishingDate
     createdAt
+    author {
+      id
+      firstname
+      lastname
+    }
+    editor {
+      id
+      firstname
+      lastname
+    }
     components {
       ...ComponentRecursive
     }

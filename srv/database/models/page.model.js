@@ -73,7 +73,7 @@ module.exports = class Page extends Model {
               where: {
                 uuid
               },
-              attributes: ["version"],
+              attributes: ["version", "authorId"],
               order: [["updatedAt", "DESC"]],
               raw: true
             })
@@ -83,6 +83,8 @@ module.exports = class Page extends Model {
               page.version = page.isDraft ?
                 (version + .1) :
                 Math.floor(version + 1)
+
+                page.authorId = lastVersion.authorId
             }
           }
           else {
@@ -101,11 +103,17 @@ module.exports = class Page extends Model {
     })
   }
 
-  static associate ({ Navigation, Component }) {
+  static associate ({ Navigation, User, Component }) {
     this.hasMany(Navigation, {
       as: "navigations",
       allowNull: true,
       defaultValue: null
+    })
+    this.belongsTo(User, {
+      as: "author"
+    })
+    this.belongsTo(User, {
+      as: "editor"
     })
 
     this.hasMany(Component)

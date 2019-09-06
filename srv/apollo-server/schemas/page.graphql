@@ -13,6 +13,8 @@ type Page {
   version: Float
   uuid: String
   hidden: Boolean
+  author: User!
+  editor: User!
   createdAt: String!
   updatedAt: String!
 }

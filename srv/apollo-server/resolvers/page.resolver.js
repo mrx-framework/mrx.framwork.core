@@ -4,7 +4,11 @@ const { Op } = require("sequelize")
 
 module.exports = {
   Component: {
-    childs: (parent, _, { Component }) => Component.findAll({ where: { component_id: parent.id }, order: [["order"]] } )
+    childs: (parent, _, { Component }) => Component.findAll({ where: { component_id: parent.id }, order: [["order"]] } ),
+  },
+  Page: {
+    author: async (parent) => await parent.getAuthor(),
+    editor: async (parent) => await parent.getEditor(),
   },
   Query: {
     routes: (root, _, { Page }) => Page.findAll(),
@@ -40,10 +44,18 @@ module.exports = {
     }
   },
   Mutation: {
-    createPage: async (parent, args, { Page } ) => {
-      return await Page.create(args)
+    createPage: async (parent, args, { Page, User, currentUser } ) => {
+      const { accountname } = currentUser
+      const author = await User.findOne({ where: { accountname } })
+      const page = await Page.create(args)
+      await page.setAuthor(author.id)
+      await page.setEditor(author.id)
+      return page
     },
-    updatePage: async(parent, args , { Page }) => {
+    updatePage: async(parent, args , { Page, User, currentUser }) => {
+      const { accountname } = currentUser
+      const author = await User.findOne({ where: { accountname } })
+
       // TODO TIME IS FUCKING SHIT
       let createdAt = new Date(0)
       createdAt.setUTCMilliseconds(args.created_at)
@@ -60,9 +72,9 @@ module.exports = {
       }
 
       //console.log(moment().utc(args.created_at).format("YYYY-MM-DD HH:mm:ss"))
-
-      return await Page.create(pagePayload, { raw: true })
-
+      const page = Page.create(pagePayload, { raw: true })
+      await page.setEditor(author.id)
+      return page
     },
     attachComponentToPage: async(_, { id, attach }, { Page, Component }) => {
       const page = await Page.findByPk(id)

@@ -2,14 +2,16 @@ const config = require("../../../config")
 const locales = require(`../../../src/locales/${config.locale}`)
 
 module.exports = async ({ Page }) => {
-  return await Page.bulkCreate([
+  const pages = await Page.bulkCreate([
     {
       title: locales.navigation.dashboard,
       slug: "admin-dashboard",
       path: "/admin",
       component: "/admin/Dashboard.vue",
       isDraft: false,
-      hidden: true
+      hidden: true,
+      authorId: 1,
+      editorId: 1
     },
     {
       title: locales.navigation.pages,
@@ -17,7 +19,9 @@ module.exports = async ({ Page }) => {
       path: "/admin/pages",
       component: "/admin/pages/index.vue",
       isDraft: false,
-      hidden: true
+      hidden: true,
+      authorId: 1,
+      editorId: 1
     },
     {
       title: locales.navigation.new_page,
@@ -26,7 +30,9 @@ module.exports = async ({ Page }) => {
       layout: "blank",
       component: "/admin/pages/action.vue",
       isDraft: false,
-      hidden: true
+      hidden: true,
+      authorId: 1,
+      editorId: 1
     },
     {
       title: locales.navigation.blog,
@@ -34,7 +40,9 @@ module.exports = async ({ Page }) => {
       path: "/admin/blog",
       component: "/admin/blog/index.vue",
       isDraft: false,
-      hidden: true
+      hidden: true,
+      authorId: 1,
+      editorId: 1
     },
     {
       title: locales.navigation.blog,
@@ -42,7 +50,9 @@ module.exports = async ({ Page }) => {
       path: "/admin/blog/action",
       component: "/admin/blog/action.vue",
       isDraft: false,
-      hidden: true
+      hidden: true,
+      authorId: 1,
+      editorId: 1
     },
     {
       title: locales.navigation.blog_categories,
@@ -50,7 +60,9 @@ module.exports = async ({ Page }) => {
       path: "/admin/blog/categories",
       component: "/admin/blog/categories.vue",
       isDraft: false,
-      hidden: true
+      hidden: true,
+      authorId: 1,
+      editorId: 1
     },
     {
       title: locales.navigation.blog_tags,
@@ -58,7 +70,9 @@ module.exports = async ({ Page }) => {
       path: "/admin/blog/tags",
       component: "/admin/blog/tags.vue",
       isDraft: false,
-      hidden: true
+      hidden: true,
+      authorId: 1,
+      editorId: 1
     },
     {
       title: locales.navigation.media,
@@ -66,7 +80,9 @@ module.exports = async ({ Page }) => {
       path: "/admin/media",
       component: "/admin/media/index.vue",
       isDraft: false,
-      hidden: true
+      hidden: true,
+      authorId: 1,
+      editorId: 1
     },
     {
       title: locales.navigation.navigation,
@@ -74,7 +90,9 @@ module.exports = async ({ Page }) => {
       path: "/admin/navigation",
       component: "/admin/Navigation.vue",
       isDraft: false,
-      hidden: true
+      hidden: true,
+      authorId: 1,
+      editorId: 1
     },
     {
       title: locales.navigation.users,
@@ -82,7 +100,9 @@ module.exports = async ({ Page }) => {
       path: "/admin/users",
       component: "/admin/Users.vue",
       isDraft: false,
-      hidden: true
+      hidden: true,
+      authorId: 1,
+      editorId: 1
     },
     {
       title: locales.navigation.groups,
@@ -90,7 +110,9 @@ module.exports = async ({ Page }) => {
       path: "/admin/roles",
       component: "/admin/Roles.vue",
       isDraft: false,
-      hidden: true
+      hidden: true,
+      authorId: 1,
+      editorId: 1
     },
     {
       title: locales.navigation.permissions,
@@ -98,7 +120,9 @@ module.exports = async ({ Page }) => {
       path: "/admin/permissions",
       component: "/admin/Permissions.vue",
       isDraft: false,
-      hidden: true
+      hidden: true,
+      authorId: 1,
+      editorId: 1
     },
     {
       title: locales.navigation.forms,
@@ -106,7 +130,9 @@ module.exports = async ({ Page }) => {
       path: "/admin/forms",
       component: "/admin/Form.vue",
       isDraft: false,
-      hidden: true
+      hidden: true,
+      authorId: 1,
+      editorId: 1
     },
     {
       title: locales.navigation.theme,
@@ -114,7 +140,9 @@ module.exports = async ({ Page }) => {
       path: "/admin/theme",
       component: "/admin/Theme.vue",
       isDraft: false,
-      hidden: true
+      hidden: true,
+      authorId: 1,
+      editorId: 1
     },
     {
       title: locales.navigation.settings,
@@ -122,14 +150,18 @@ module.exports = async ({ Page }) => {
       path: "/admin/settings",
       component: "/admin/Settings.vue",
       isDraft: false,
-      hidden: true
+      hidden: true,
+      authorId: 1,
+      editorId: 1
     },
     {
       title: locales.navigation.home,
       slug: "home",
       path: "/",
       isDraft: false,
-      hidden: false
+      hidden: false,
+      authorId: 1,
+      editorId: 1
     },
     {
       title: locales.navigation.blog,
@@ -137,7 +169,9 @@ module.exports = async ({ Page }) => {
       path: "/blog",
       component: "/frontend/Blog/BlogList.vue",
       isDraft: false,
-      hidden: true
+      hidden: true,
+      authorId: 1,
+      editorId: 1
     },
     {
       title: `${locales.navigation.blog} Single`,
@@ -145,7 +179,11 @@ module.exports = async ({ Page }) => {
       path: "/blog/:path",
       component: "/frontend/Blog/BlogPost.vue",
       isDraft: false,
-      hidden: true
+      hidden: true,
+      authorId: 1,
+      editorId: 1
     },
-  ], { individualHooks: true })
+  ], { individualHooks: true, raw: true })
+
+  return pages
 }

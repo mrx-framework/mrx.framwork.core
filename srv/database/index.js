@@ -26,13 +26,13 @@ Object.values(models)
 
 if ( database.migrate === "auto" ) {
   sequelize.sync({ force: true })
-    .then(() => {
+    .then(async () => {
       if (database.seeding === "auto") {
-        require("./seeds/settings.seed")(models)
-        require("./seeds/navigation.seed")(models)
-        require("./seeds/user.seed")(models)
-        require("./seeds/page.seed")(models)
-        require("./seeds/media.seed")(models)
+        await require("./seeds/settings.seed")(models)
+        await require("./seeds/navigation.seed")(models)
+        await require("./seeds/user.seed")(models)
+        await require("./seeds/page.seed")(models)
+        await require("./seeds/media.seed")(models)
       }
     })
 }
