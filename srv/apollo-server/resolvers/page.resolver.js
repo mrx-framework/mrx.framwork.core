@@ -72,7 +72,7 @@ module.exports = {
       }
 
       //console.log(moment().utc(args.created_at).format("YYYY-MM-DD HH:mm:ss"))
-      const page = Page.create(pagePayload, { raw: true })
+      const page = await Page.create(pagePayload, { raw: true })
       await page.setEditor(author.id)
       return page
     },

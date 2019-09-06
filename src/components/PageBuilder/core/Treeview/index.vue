@@ -49,6 +49,9 @@
             </v-btn>
           </template>
           <template v-if="!moveEnabled">
+            <v-btn icon small @click.stop="DUPLICATE_COMPONENT(item)">
+              <v-icon small>mdi-content-duplicate</v-icon>
+            </v-btn>
             <v-btn icon small @click.stop="EDIT_COMPONENT(item)">
               <v-icon small>mdi-brush</v-icon>
             </v-btn>
@@ -74,6 +77,7 @@
 
 <script>
 import { mapGetters, mapState } from "vuex";
+import { cloneDeep } from "lodash";
 export default {
   components: {
     TreeView: () => import("./index.vue")
@@ -113,7 +117,7 @@ export default {
       immediate: true
     },
     selectedComponent: {
-      handler (component) {
+      handler(component) {
         if (component) {
           this.EXPAND_PARENT(component.id);
         }
@@ -131,9 +135,9 @@ export default {
         this.moveEnabled = null;
       }
     },
-    moveDisabler (bool) {
+    moveDisabler(bool) {
       if (!bool) {
-        this.moveEnabled = false
+        this.moveEnabled = false;
       }
     }
   },
@@ -191,6 +195,11 @@ export default {
     REMOVE_COMPONENT(component) {
       this.$store.dispatch("builder/REMOVE_COMPONENT", component);
     },
+    DUPLICATE_COMPONENT(component) {
+      const _component = cloneDeep(component);
+      const newComponent = this.CHANGE_COMPONENT_IDS(_component);
+      this.$store.dispatch("builder/ADD_COMPONENT", newComponent);
+    },
     START_MOVING(component) {
       this.disableChilds = true;
       this.moveEnabled = true;
@@ -212,10 +221,21 @@ export default {
       this.$emit("onMoveStop");
     },
     MOVE_UP(component) {
-       this.$store.dispatch("builder/MOVE_UP", component)
+      this.$store.dispatch("builder/MOVE_UP", component);
     },
     MOVE_DOWN(component) {
-       this.$store.dispatch("builder/MOVE_DOWN", component)
+      this.$store.dispatch("builder/MOVE_DOWN", component);
+    },
+    CHANGE_COMPONENT_IDS(component) {
+      component.id = this.GET_RANDOM_ID();
+      for (let i = 0; i < component.childs.length; i++) {
+        let child = component.childs[i];
+        this.CHANGE_COMPONENT_IDS(child);
+      }
+      return component;
+    },
+    GET_RANDOM_ID() {
+      return Math.round(Math.random() * 99999);
     }
   },
   mounted() {

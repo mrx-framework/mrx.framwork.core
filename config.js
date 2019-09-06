@@ -10,8 +10,8 @@ const config = {
         "host": "127.0.0.1",
         "dialect": "mariadb"
       },
-      migrate: false, //"auto",
-      seeding: false, //"auto"
+      migrate: "auto",
+      seeding: "auto"
     },
     server: {
       ssl: false,
@@ -30,8 +30,8 @@ const config = {
         "host": "127.0.0.1",
         "dialect": "mariadb"
       },
-      migrate: "auto",
-      seeding: "auto"
+      migrate: false, //"auto",
+      seeding: false, //"auto"
     },
     server: {
       ssl: false,

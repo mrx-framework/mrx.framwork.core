@@ -17,7 +17,8 @@
                 v-for="item in navigation"
                 :key="item.id"
                 class="mr-2"
-                :to="item.path">{{ item.text }}</v-btn>
+                :to="item.path"
+              >{{ item.text }}</v-btn>
               <v-btn text to="/admin">Admin</v-btn>
             </v-col>
           </v-row>
@@ -29,7 +30,7 @@
 </template>
 
 <script>
-import { displayNavigation } from "@/api/apollo/queries"
+import { displayNavigation } from "@/api/apollo/queries";
 export default {
   name: "MainLayout",
   apollo: {

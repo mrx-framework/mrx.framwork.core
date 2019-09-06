@@ -3,7 +3,7 @@
   "description": "The core of MRX.FRAMEWORK",
   "version": "0.0.1",
   "author": "Dominic Marx <dmarx@marxulm.de>",
-  "license": "GNUv3",
+  "license": "GPL-3.0-or-later",
   "private": false,
   "scripts": {
     "lint": "eslint ./srv/**/*.js",
