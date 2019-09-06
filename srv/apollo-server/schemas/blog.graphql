@@ -10,6 +10,8 @@ type BlogPost {
   isPublished: Boolean
   category: BlogCategory
   tags: [Tag]
+  author: User!
+  editor: User!
   createdAt: String!
   updatedAt: String!
 }

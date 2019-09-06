@@ -1,9 +1,11 @@
-const { QueryModel, QueryRelated } = require("../utils")
+const { QueryModel } = require("../utils")
 const moment = require("moment")
 
 module.exports = {
   BlogPost: {
     category: async (parent) => await parent.getBlogcategory(),
+    author: async (parent) => await parent.getAuthor(),
+    editor: async (parent) => await parent.getEditor(),
     /*
     tags: (parent, args) => {
       const { page, limit, query } = args
@@ -58,11 +60,18 @@ module.exports = {
     ),
   },
   Mutation: {
-    createBlogPost: async (_, args, { BlogPost } ) => {
-      return await BlogPost.create(args)
+    createBlogPost: async (_, args, { BlogPost, User, currentUser } ) => {
+      const { accountname } = currentUser
+      const author = await User.findOne({ where: { accountname } })
+      const post = await BlogPost.create(args)
+      await post.setAuthor(author.id)
+      await post.setEditor(author.id)
+      return post
     },
-    updateBlogPost: async (_, args , { BlogPost }) => {
-      console.log(args)
+    updateBlogPost: async (_, args , { BlogPost, User, currentUser }) => {
+      const { accountname } = currentUser
+      const author = await User.findOne({ where: { accountname } })
+
       const blogPayload = {
         title: args.title,
         path: args.path,
@@ -79,6 +88,7 @@ module.exports = {
       if (args.tags) {
         blog.setTags(args.tags)
       }
+      blog.setEditor(author.id)
 
       return blog
     },

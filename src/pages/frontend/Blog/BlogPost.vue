@@ -13,10 +13,10 @@
 
               <v-chip pill small class="mr-3">
                 <v-icon small class="mr-2">mdi-account-outline</v-icon>
-                MRX. FRAMEWORK
+                {{ blogpost.author.firstname }} {{ blogpost.author.lastname }}
               </v-chip>
 
-               <v-chip pill small class="mr-3">
+              <v-chip pill small class="mr-3">
                 <v-icon small class="mr-2">mdi-calendar-month-outline</v-icon>
                 {{ $moment.utc(parseInt(blogpost.createdAt)).format("LLL")}}
               </v-chip>
@@ -37,22 +37,22 @@
 </template>
 
 <script>
-import { displayBlogPost } from "@/api/apollo/queries/blog.queries"
+import { displayBlogPost } from "@/api/apollo/queries/blog.queries";
 
 export default {
   computed: {
-    postPath () {
-      const { path } = this.$route.params
-      return `/${path}`
+    postPath() {
+      const { path } = this.$route.params;
+      return `/${path}`;
     }
   },
   apollo: {
     blogpost: {
       query: displayBlogPost,
-      variables () {
+      variables() {
         return {
           path: this.postPath
-        }
+        };
       },
       update: ({ displayblogpost }) => displayblogpost
     }
@@ -60,5 +60,5 @@ export default {
   data: () => ({
     blogpost: null
   })
-}
+};
 </script>

@@ -26,6 +26,10 @@ export const displayBlogPost = gql`
         id
         name
       }
+      author {
+        firstname
+        lastname
+      }
       createdAt
       updatedAt
     }

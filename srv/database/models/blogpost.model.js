@@ -54,7 +54,7 @@ module.exports = class BlogPost extends Model {
               where: {
                 uuid
               },
-              attributes: ["version"],
+              attributes: ["version", "authorId"],
               order: [["updatedAt", "DESC"]],
               raw: true
             })
@@ -64,6 +64,7 @@ module.exports = class BlogPost extends Model {
               blogpost.version = blogpost.isDraft ?
                 (version + .1) :
                 Math.floor(version + 1)
+              blogpost.authorId = lastVersion.authorId
             }
           }
           else {
@@ -84,7 +85,12 @@ module.exports = class BlogPost extends Model {
 
   static associate ({ BlogCategory, User, Tag }) {
     this.belongsTo(BlogCategory)
-    this.belongsTo(User)
+    this.belongsTo(User, {
+      as: "author"
+    })
+    this.belongsTo(User, {
+      as: "editor"
+    })
     this.belongsToMany(Tag, {
       through: "blog_tags"
     })
